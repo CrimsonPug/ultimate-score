@@ -1,0 +1,28 @@
+{
+  "name": "ultimate-score",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.7.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "bookshelf": "^0.10.2",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "knex": "^0.12.6",
+    "pg": "^6.1.0",
+    "react": "^15.4.0",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.0",
+    "react-router": "^3.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
