@@ -23,7 +23,7 @@ app.use('/login', loginRoutes);
 app.use('/openPlayers', openPlayersRoutes);
 
 app.get('*', function(req, res) {
-   res.sendFile(path.resolve((__dirname+'../build/index.html')));
+   res.sendFile(path.resolve((__dirname+'./../build/index.html')));
 });
 
 app.listen(PORT, () => {
