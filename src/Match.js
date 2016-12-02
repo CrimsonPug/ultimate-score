@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Scoreboard from './Scoreboard';
+import {Button} from 'react-bootstrap';
 import './match.css';
-import {Button} from './Button';
+import {Score} from './Button';
 import {Menu} from './Menu';
 import {Stats} from './Stats';
 import axios from 'axios';
@@ -30,6 +31,18 @@ class Match extends Component {
         this.handleDelete = this.handleDelete.bind(this)
         this.handleHomeDelete = this.handleHomeDelete.bind(this)
         this.handleClose = this.handleClose.bind(this)
+        this.gameOver = this.gameOver.bind(this)
+
+    }
+    gameOver(){
+        confirm('Are you sure?')
+        if (this.state.homeCounter > this.state.awayCounter){
+            alert('Home team wins!')
+        }else if(this.state.homeCounter < this.state.awayCounter){
+            alert('Away home team wins!')
+        }else{
+            alert('Draw... boring')
+        }    
     }
     handleHomeScore(){
         this.setState({
@@ -178,12 +191,13 @@ class Match extends Component {
     }
     
     render(){
+        const wellStyles = {maxWidth: 400, margin: '0 auto 10px'};
         return(
             <div>
                 <div>
                     <Scoreboard currentScore = {this.state.currentScore} />
                         
-                    <Button  handleAwayScore={this.handleAwayScore} handleHomeScore={this.handleHomeScore}/>
+                    <Score  handleAwayScore={this.handleAwayScore} handleHomeScore={this.handleHomeScore}/>
                 </div>
                 <Menu   loading={this.state.loading}
                         scorer={this.state.scorer}
@@ -204,6 +218,9 @@ class Match extends Component {
                        handleDelete = {this.handleDelete}
                        match = {this.state.match}
                         />
+                <div className="well" style={wellStyles}>
+                    <Button bsStyle="primary" onClick={this.gameOver} bsSize="large" block>Game Over!</Button>
+                </div>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './match.css';
 
-class Button extends Component {
+class Score extends Component {
     constructor(){
         super();
         this.handleHomeScore = this.handleHomeScore.bind(this)
@@ -35,4 +35,4 @@ class Button extends Component {
     }
 }
 
-export {Button};
+export {Score};
