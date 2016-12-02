@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pg = require('pg');
 
+app.use(express.static(__dirname + './../build'))
 //application
 const app = express();
 const PORT = process.env.PORT || 3005;
@@ -21,6 +22,8 @@ const openPlayersRoutes = require('./routes/open_players');
 
 app.use('/login', loginRoutes);
 app.use('/openPlayers', openPlayersRoutes);
+
+
 
 app.get('*', function(req, res) {
    res.sendFile(path.resolve((__dirname+'./../build/index.html')));
