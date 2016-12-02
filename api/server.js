@@ -3,11 +3,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pg = require('pg');
 
-app.use(express.static(__dirname + './../build'))
+
 //application
 const app = express();
 const PORT = process.env.PORT || 3005;
 app.use(bodyParser.json());
+
+app.use(express.static(__dirname + './../build'))
 
 //defines which origins and headers are permitted
 app.use(function(req, res, next) {
