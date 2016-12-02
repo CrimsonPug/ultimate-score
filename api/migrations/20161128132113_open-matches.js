@@ -4,13 +4,15 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary(); // adds incrementing int for id
         table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
         table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
-        table.integer('home-team-id') // adds a string column
+        table.integer('home_team_id') // adds a string column
             .notNullable(); // and is required
-        table.integer('away-team-id') // adds a string column
+        table.integer('away_team_id') // adds a string column
             .notNullable(); // and is required
-        table.string('home-team').notNullable();
-        table.string('away-team').notNullable();
-        table.string('final-score');
+        table.string('home_team').notNullable();
+        table.string('away_team').notNullable();
+        table.string('final_score');
+        table.string('home_stats');
+        table.string('away_stats');
     })
 };
 

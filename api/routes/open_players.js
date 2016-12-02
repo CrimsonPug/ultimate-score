@@ -4,7 +4,7 @@ const knex = require('knex')({
     host     : '127.0.0.1',
     user     : 'postgres',
     password : 'postgres',
-    database : 'ultimatescore',
+    database : 'ultimate',
     charset  : 'utf8'
   }
 });
@@ -270,6 +270,7 @@ router.put('/deleteHomeStats',(req,res)=>{
 })
 //edit team stats
 router.put('/editStats',(req,res) =>{
+    console.log(req.body.match)
     Match
         .where({id:req.body.match})
         .fetch()

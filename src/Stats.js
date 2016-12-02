@@ -50,8 +50,8 @@ class Stats extends Component{
             match: this.props.match,
             editScore: this.state.editScore,
             scorer:this.state.scorer,
-            assist:this.state.roster[this.state.assist].name,
-            team:this.state.roster[this.state.assist].teamid
+            assist:'#'+ this.state.roster[this.state.assist].squadNumber+ ' ' +this.state.roster[this.state.assist].name,
+            team: this.state.roster[this.state.assist].teamid
         }
         axios
         .put('http://localhost:3005/openPlayers/editStats',updatedStats)
