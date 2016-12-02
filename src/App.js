@@ -200,12 +200,11 @@ class Register extends Component {
 class Nav extends Component {
    render() {
         return (
-            <div>
-                <ul>
+            <div className="nav">
+              <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Register</Link></li>
-            
+                    <li><Link to="/register">Register</Link></li>             
                 </ul>
                 {this.props.children}               
             </div>
@@ -214,3 +213,7 @@ class Nav extends Component {
 }
 
 export {Nav,Register,Login,PrivatePage};
+
+
+
+               

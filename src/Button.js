@@ -22,20 +22,12 @@ class Button extends Component {
                             className="btn score-btn btn-success">
                             Score!
                     </button>
-                    <button type="button" 
-                            className="btn edit-btn btn-danger">
-                            Edit
-                    </button>
                 </div>             
                 <div className="away-btn">
                     <button type="button" 
                             onClick={this.handleAwayScore}
                             className="btn score-btn btn-success">
                             Score!
-                    </button>
-                    <button type="button" 
-                            className="btn edit-btn btn-danger">
-                            Edit
                     </button>
                 </div>
             </div>

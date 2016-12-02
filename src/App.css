@@ -26,3 +26,12 @@
 #sensitive{
   width:800px;
 }
+
+ul{
+  height: 30px;
+}
+li{
+  display:inline-block;
+  padding-left:20px;
+  padding-top:10px;
+}
