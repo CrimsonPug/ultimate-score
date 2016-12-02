@@ -62,7 +62,7 @@ class Stats extends Component{
         this.setState({
              showModal: false 
             })
-    location.href ="http://localhost:3000/match";
+    location.href ="/match";
     }
     open(stats){
         
