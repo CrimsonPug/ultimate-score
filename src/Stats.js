@@ -54,7 +54,7 @@ class Stats extends Component{
             team: this.state.roster[this.state.assist].teamid
         }
         axios
-        .put('http://localhost:3005/openPlayers/editStats',updatedStats)
+        .put('/openPlayers/editStats',updatedStats)
         .then((res) => {
             console.log(res.data)
         })
@@ -107,7 +107,7 @@ class Stats extends Component{
     componentDidUpdate(prevProps,prevState){
         if (prevProps.currentScore !== this.props.currentScore){
         axios
-        .get('http://localhost:3005/openPlayers/stats')
+        .get('/openPlayers/stats')
         .then((res) => {
             console.log('fuck yea')
             let homeStats = res.data.home;
@@ -124,7 +124,7 @@ class Stats extends Component{
     }
     componentDidMount(){
         axios
-        .get('http://localhost:3005/openPlayers/stats')
+        .get('/openPlayers/stats')
         .then((res) => {
             console.log('componentDidMount in Stats executed')
             let homeStats = res.data.home;

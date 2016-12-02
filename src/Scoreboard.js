@@ -12,7 +12,7 @@ class ScoreBoard extends Component{
     }
     componentDidMount(){
         axios
-        .get('http://localhost:3005/openPlayers/match')
+        .get('/openPlayers/match')
         .then((res) => {
             // console.log('componentDidMount in Scoreboard executed')
             this.setState({
@@ -25,7 +25,7 @@ class ScoreBoard extends Component{
     componentDidUpdate(prevProps){
         if (prevProps.currentScore !== this.props.currentScore){
         axios
-        .get('http://localhost:3005/openPlayers/match')
+        .get('/openPlayers/match')
         .then((res) => {
             console.log('componentWillUpdate in scoreboard executed')
             this.setState({

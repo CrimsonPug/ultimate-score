@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const pg = require('pg');
@@ -20,6 +21,10 @@ const openPlayersRoutes = require('./routes/open_players');
 
 app.use('/login', loginRoutes);
 app.use('/openPlayers', openPlayersRoutes);
+
+app.get('*', function(req, res) {
+   res.sendFile(path.resolve((__dirname+'./../steam-api-front/build/index.html')));
+});
 
 app.listen(PORT, () => {
     console.log('Server Started on http://localhost:%s',PORT);

@@ -16,7 +16,7 @@ class Login extends Component {
     let self = this;
     e.preventDefault();
     axios
-      .post('http://localhost:3005/login',this.state)
+      .post('/login',this.state)
       .then((res) => {
         console.log(res);
         /*
@@ -26,7 +26,7 @@ class Login extends Component {
         */
            if(res.status === 200){
             localStorage.authToken = res.data.token;
-            location.href ="http://localhost:3000/private";
+            location.href ="/private";
             console.log('token saved');
           }else{
               self.setState({
@@ -100,7 +100,7 @@ class PrivatePage extends Component{
     //token check
     if(localStorage.authToken !== undefined && localStorage.authToken !== null){
         axios
-        .get('http://localhost:3005/login/privatedata', {headers:{'authorization':localStorage.authToken}})
+        .get('/login/privatedata', {headers:{'authorization':localStorage.authToken}})
         .then( (res) => {
             //token is valid show page and data
             if(res.status === 200){
@@ -116,7 +116,7 @@ class PrivatePage extends Component{
     }
     else{
         console.log('accest denied');
-        location.href = 'http://localhost:3000';
+        location.href = '/';
     }
   
      /* TASK 7: The response should include the username, display "Hello, [USERNAME]" on this page.
@@ -148,7 +148,7 @@ class Register extends Component {
   formSubmit(e){
     e.preventDefault();
     axios
-      .post('http://localhost:3005/login/encrypt',this.state)
+      .post('/login/encrypt',this.state)
       .then( (res) =>{
         console.log(res);
       })

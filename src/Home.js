@@ -14,37 +14,37 @@ class Home extends Component {
                 
                     <div className="match-container row col-centered">
                         <div className="col-xs-12 col-sm-6">
-                            <a className="match-link" href="http://localhost:3000/match">
+                            <a className="match-link" href="/match">
                                 <div className="match-list well" align="center">Match List</div>
                             </a>
 
-                            <a className="match-link" href="http://localhost:3000/match">
+                            <a className="match-link" href="/match">
                                 <div className="match-list well" align="center">Match List</div>
                             </a>
 
-                            <a className="match-link" href="http://localhost:3000/match">
+                            <a className="match-link" href="/match">
                                 <div className="match-list well" align="center">Match List</div>
                             </a>
 
-                            <a className="match-link" href="http://localhost:3000/match">
+                            <a className="match-link" href="/match">
                                 <div className="match-list well">Match List</div>
                             </a>
                         </div>
                         <div className="col-xs-12 col-sm-6 ">
                             
-                            <a className="match-link" href="http://localhost:3000/match">
+                            <a className="match-link" href="/match">
                                 <div className="match-list well" align="center">Match List</div>
                             </a>
 
-                            <a className="match-link" href="http://localhost:3000/match">
+                            <a className="match-link" href="/match">
                                 <div className="match-list well" align="center">Match List</div>
                             </a>
 
-                            <a className="match-link" href="http://localhost:3000/match">
+                            <a className="match-link" href="/match">
                                 <div className="match-list well" align="center">Match List</div>
                             </a>
 
-                            <a className="match-link" href="http://localhost:3000/match">
+                            <a className="match-link" href="/match">
                                 <div className="match-list well" align="center">Match List</div>
                             </a>
                         </div>
