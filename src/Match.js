@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Scoreboard from './Scoreboard';
 import {Button} from 'react-bootstrap';
+import Scoreboard from './Scoreboard';
 import './match.css';
 import {Score} from './Button';
 import {Menu} from './Menu';
@@ -33,7 +33,6 @@ class Match extends Component {
         this.handleHomeDelete = this.handleHomeDelete.bind(this)
         this.handleClose = this.handleClose.bind(this)
         this.gameOver = this.gameOver.bind(this)
-
     }
     gameOver(){
         confirm('Are you sure?')
@@ -49,7 +48,7 @@ class Match extends Component {
         })
         setTimeout(()=>{
             console.log(this.state.gameOver)   
-        },300)    
+        },300) 
     }
     handleHomeScore(){
         this.setState({
@@ -73,7 +72,7 @@ class Match extends Component {
             assist:assist
         }
         axios
-            .put('/openPlayers/putScoreHome',saveData)
+            .put('http://localhost:3005/openPlayers/putScoreHome',saveData)
             .then((res) => {
                 this.setState({
                     team:2,
@@ -97,7 +96,7 @@ class Match extends Component {
             assist:assist
         }    
         axios
-            .put('/openPlayers/putScoreAway',saveData)
+            .put('http://localhost:3005/openPlayers/putScoreAway',saveData)
             .then((res) => {
                 this.setState({
                     team:1,
@@ -121,7 +120,7 @@ class Match extends Component {
                 } 
                 console.log(saveData)
                 axios
-                    .put('/openPlayers/deleteStats',saveData)
+                    .put('http://localhost:3005/openPlayers/deleteStats',saveData)
                     .then((res) => {
                         // console.log(res.data)
                         this.setState({
@@ -146,7 +145,7 @@ class Match extends Component {
                 } 
                 console.log(saveData)
                 axios
-                    .put('/openPlayers/deleteHomeStats',saveData)
+                    .put('http://localhost:3005/openPlayers/deleteHomeStats',saveData)
                     .then((res) => {
                         // console.log(res.data)
                         this.setState({
@@ -160,7 +159,7 @@ class Match extends Component {
     }
     componentWillMount(){
         axios
-        .get('/openPlayers/')
+        .get('http://localhost:3005/openPlayers/')
         .then((res)=> { 
             let currentScore = res.data.currentScore;
             //splitting the score(string) and turn it into integer
@@ -202,7 +201,8 @@ class Match extends Component {
         return(
             <div>
                 <div>
-                    <Scoreboard currentScore = {this.state.currentScore} />                   
+                    <Scoreboard  currentScore = {this.state.currentScore} />
+                        
                     <Score gameOver={this.state.gameOver} handleAwayScore={this.handleAwayScore} handleHomeScore={this.handleHomeScore}/>
                 </div>
                 <Menu   loading={this.state.loading}
