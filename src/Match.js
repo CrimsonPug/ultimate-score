@@ -35,6 +35,7 @@ class Match extends Component {
         this.gameOver = this.gameOver.bind(this)
     }
     gameOver(){
+        console.log('game over clicked')
         confirm('Are you sure?')
         if (this.state.homeCounter > this.state.awayCounter){
             alert('Home team wins!')
