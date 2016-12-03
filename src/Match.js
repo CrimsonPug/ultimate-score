@@ -22,7 +22,8 @@ class Match extends Component {
             homeRoster:[],
             awayRoster:[],
             scorer:'',
-            assist:''
+            assist:'',
+            gameOver:false
         }
         this.handleHomeScore = this.handleHomeScore.bind(this)
         this.handleAwayScore = this.handleAwayScore.bind(this)
@@ -195,9 +196,8 @@ class Match extends Component {
         return(
             <div>
                 <div>
-                    <Scoreboard currentScore = {this.state.currentScore} />
-                        
-                    <Score  handleAwayScore={this.handleAwayScore} handleHomeScore={this.handleHomeScore}/>
+                    <Scoreboard currentScore = {this.state.currentScore} />                   
+                    <Score gameOver={this.state.gameOver} handleAwayScore={this.handleAwayScore} handleHomeScore={this.handleHomeScore}/>
                 </div>
                 <Menu   loading={this.state.loading}
                         scorer={this.state.scorer}
