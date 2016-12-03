@@ -25,21 +25,23 @@ class Score extends Component {
                 <div className="button-container">
                     <div className="home-btn">
                         <button type="button"
-                                onClick={this.handleHomeScore} 
-                                className="btn score-btn btn-success">
+                                onClick={this.handleHomeScore}
+                                className="btn score-btn btn-success"
+                                >
                                 Score!
                         </button>
                     </div>             
                     <div className="away-btn">
                         <button type="button" 
                                 onClick={this.handleAwayScore}
-                                className="btn score-btn btn-success">
+                                className="btn score-btn btn-success"
+                                >
                                 Score!
                         </button>
                     </div>
                 </div>
             )
-        }     
+        }
     }
 }
 
