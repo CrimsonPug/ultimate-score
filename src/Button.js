@@ -7,14 +7,15 @@ class Score extends Component {
         this.handleHomeScore = this.handleHomeScore.bind(this)
         this.handleAwayScore = this.handleAwayScore.bind(this)
     }
-    handleHomeScore(){
+    handleHomeScore(e){
+        e.preventDefault();
         this.props.handleHomeScore()
     }
-    handleAwayScore(){
+    handleAwayScore(e){
+        e.preventDefault();
         this.props.handleAwayScore()
     }
     render(){
-        console.log(this.props.gameOver)
         if (this.props.gameOver === true){
             return(
                 <div className="Done">
