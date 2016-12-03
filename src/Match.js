@@ -43,7 +43,13 @@ class Match extends Component {
             alert('Away home team wins!')
         }else{
             alert('Draw... boring')
-        }    
+        }
+        this.setState({
+            gameOver:true
+        })
+        setTimeout(()=>{
+            console.log(this.state.gameOver)   
+        },300)    
     }
     handleHomeScore(){
         this.setState({
