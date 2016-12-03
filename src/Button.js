@@ -14,6 +14,7 @@ class Score extends Component {
         this.props.handleAwayScore()
     }
     render(){
+        console.log(this.props.gameOver)
         if (this.props.gameOver === true){
             return(
                 <div className="Done">
