@@ -109,7 +109,7 @@ class PrivatePage extends Component{
                 auth:true,
                 data:res.data
                 });
-                 console.log('access granted');
+                 console.log(res);
             }
         });
        
@@ -152,6 +152,7 @@ class Register extends Component {
       .then( (res) =>{
         console.log(res);
       })
+      location.href = '/login';
   }
 
   txtFieldChange(e){
@@ -165,6 +166,7 @@ class Register extends Component {
       username:this.state.username,
       password:this.state.password
     });
+
   }
 
   render() {
