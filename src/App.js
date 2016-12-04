@@ -129,7 +129,7 @@ class PrivatePage extends Component{
     else {
       return (
         <div>
-          <h1 id='welcome-title'>Welcome back {this.state.data}!</h1>
+          <h2>Welcome back {this.state.data}!</h2>
           <img id="sensitive" src="http://wallpapercave.com/wp/jHWGRA7.jpg" />
         </div>
         );
