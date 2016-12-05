@@ -37,7 +37,7 @@ class CreatePlayer extends Component{
                         <div className="col-lg-6 col-lg-offset-3">
                             <h3>Your team isn't there? Create One!</h3>
                             <p>
-                                <a className="btn btn-default btn-lg btn-block" href="http://localhost:3000/createTeam" role="button">Create Team</a>
+                                <a className="btn btn-default btn-lg btn-block" href="/createTeam" role="button">Create Team</a>
                             </p>
                         </div>
                     </div>

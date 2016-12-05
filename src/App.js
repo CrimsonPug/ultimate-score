@@ -141,21 +141,21 @@ class PrivatePage extends Component{
                 <h2>Create a match</h2>
                 <p>Do you already have a couple of teams to play one another? Set the match up here</p>
                 <p>
-                 <a className="btn btn-default" href="#" role="button">Create Match</a>
+                 <a className="btn btn-default" href="/createMatch" role="button">Create Match</a>
                 </p>
               </div>
               <div className="col-lg-4 create">
                 <h2>Create a team</h2>
                 <p>Not yet in the system? Create your team here and get ready to rumble!</p>
                 <p>
-                  <a className="btn btn-default" href="#" role="button">Create Team</a>
+                  <a className="btn btn-default" href="/createTeam" role="button">Create Team</a>
                 </p>
               </div>
               <div className="col-lg-4 create">
                 <h2>Create players</h2>
                 <p>Not enough subs? Update your team here!</p>
                 <p>
-                 <a className="btn btn-default" href="#" role="button">Create Players</a>
+                 <a className="btn btn-default" href="/createPlayers" role="button">Create Players</a>
                 </p>
               </div>
             </div>
