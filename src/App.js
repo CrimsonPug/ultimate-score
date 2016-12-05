@@ -129,10 +129,39 @@ class PrivatePage extends Component{
     else {
       return (
         <div>
-          <h1>Welcome back {this.state.data}!</h1>
-          <img id="sensitive" src="http://wallpapercave.com/wp/jHWGRA7.jpg" />
+          <div className="welcome-container">
+            <div className="welcome-inner">
+              <h1 className="welcome-title">Welcome back {this.state.data}!</h1>
+              <h4 className="welcome-title">Choose what are you up to today</h4>
+            </div>
+          </div>
+          <div className="create-container">
+            <div className="row">
+              <div className="col-lg-4 create">
+                <h2>Create a match</h2>
+                <p>Do you already have a couple of teams to play one another? Set the match up here</p>
+                <p>
+                 <a className="btn btn-default" href="#" role="button">Create Match</a>
+                </p>
+              </div>
+              <div className="col-lg-4 create">
+                <h2>Create a team</h2>
+                <p>Not yet in the system? Create your team here and get ready to rumble!</p>
+                <p>
+                  <a className="btn btn-default" href="#" role="button">Create Team</a>
+                </p>
+              </div>
+              <div className="col-lg-4 create">
+                <h2>Create players</h2>
+                <p>Not enough subs? Update your team here!</p>
+                <p>
+                 <a className="btn btn-default" href="#" role="button">Create Players</a>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        );
+      );
     }
   }
 }

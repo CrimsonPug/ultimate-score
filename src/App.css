@@ -36,6 +36,28 @@ li{
   padding-top:10px;
 }
 
-#welcome-title{
-  color:#333;
+.welcome-container{
+  width:100%;
+  height:400px;
+  background-color: #333;
+  position:relative;
+  display:table;
+}
+.welcome-inner{
+  width:100%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.welcome-title{
+  color: white;
+}
+
+.create-container{
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 30px
+}
+.col-lg-4{
+  text-align: center;
 }
