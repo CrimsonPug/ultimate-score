@@ -5,6 +5,7 @@ import {Nav,Register,Login,PrivatePage} from './App';
 import {Home} from './Home';
 import {Match} from './Match';
 import {CreateMatch} from './CreateMatch';
+import {CreateTeam} from './CreateTeam';
 import './index.css';
 
 
@@ -17,6 +18,7 @@ ReactDOM.render(
             <Route path="/match" component={Match} />
             <Route path="/private" component={PrivatePage} />
             <Route path="/createMatch" component={CreateMatch} />
+            <Route path="/createTeam" component={CreateTeam} />
         </Route>
     </Router>,
   document.getElementById('root')
