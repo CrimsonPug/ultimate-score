@@ -46,8 +46,8 @@ class ScoreBoard extends Component{
                                     src="https://pbs.twimg.com/profile_images/558112868865155072/NMa8K0Tn_400x400.jpeg"/>
                             </div>
                             <div className="homes name">
-                                <h3 className="visible-lg visible-md hidden-xs visible-sm">{this.state.homeTeam}</h3>
-                                <h3 className=" visible-xs hidden-md hidden-lg hidden-sm">AFC</h3>
+                                <h3 className="visible-lg title visible-md hidden-xs visible-sm">{this.state.homeTeam}</h3>
+                                <h3 className=" visible-xs title hidden-md hidden-lg hidden-sm">AFC</h3>
                             </div>
                             </div>
                             <div className="scoreContainer team">
@@ -59,8 +59,8 @@ class ScoreBoard extends Component{
                                         src="https://pbs.twimg.com/profile_images/658310539861479424/RRT0w90e.png"/>
                             </div>
                             <div className="aways name">
-                                <h3 className="visible-lg visible-md hidden-sm hidden-xs">{this.state.awayTeam}</h3>
-                                <h3 className="visible-sm visible-xs hidden-md hidden-lg">BSt</h3>
+                                <h3 className="visible-lg title visible-md hidden-sm hidden-xs">{this.state.awayTeam}</h3>
+                                <h3 className="visible-sm title visible-xs hidden-md hidden-lg">BSt</h3>
                             </div>
                     </div>
                 </div>
