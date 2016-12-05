@@ -7,6 +7,7 @@ import {Match} from './Match';
 import {CreateMatch} from './CreateMatch';
 import './index.css';
 
+
 ReactDOM.render(
     <Router history={browserHistory}>
         <Route path="/" component={Nav}>
