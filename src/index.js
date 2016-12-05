@@ -6,6 +6,7 @@ import {Home} from './Home';
 import {Match} from './Match';
 import {CreateMatch} from './CreateMatch';
 import {CreateTeam} from './CreateTeam';
+import {CreatePlayer} from './CreatePlayers';
 import './index.css';
 
 
@@ -19,6 +20,7 @@ ReactDOM.render(
             <Route path="/private" component={PrivatePage} />
             <Route path="/createMatch" component={CreateMatch} />
             <Route path="/createTeam" component={CreateTeam} />
+            <Route path="/createPlayers" component={CreatePlayer} />
         </Route>
     </Router>,
   document.getElementById('root')
