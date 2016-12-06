@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Modal,Button,Tooltip,OverlayTrigger} from 'react-bootstrap';
+import axios from 'axios';
 import './create.css';
 
 class CreatePlayer extends Component{
@@ -8,6 +9,7 @@ class CreatePlayer extends Component{
         this.state = ({
             addPlayer:[],
             showModal:false,
+            teams: [],
             playerName:null,
             squadNumber:null
         })
@@ -51,6 +53,15 @@ class CreatePlayer extends Component{
         })
         document.getElementById("form").reset();
     }
+    componentDidMount(){
+        axios.get('/teams')
+        .then((res) =>{
+            console.log(res.data)
+            this.setState({
+                teams:res.data
+            })
+        })
+    }
     render(){
         const tooltip = (
                     <Tooltip id="tooltip">Add more players</Tooltip>
@@ -72,8 +83,13 @@ class CreatePlayer extends Component{
                             </div>
                             <div className="panel-footer">
                                 <select className="form-control">
-                                    <option>1</option>
-                                    <option>2</option>                               
+                                    {   
+                                        this.state.teams.map((team,i)=>{
+                                            return (
+                                                <option value={i}>{team.team_name}</option>
+                                            )
+                                        })
+                                    }                               
                                 </select>
                             </div>
                         </div>
@@ -82,7 +98,7 @@ class CreatePlayer extends Component{
                         <div className="col-lg-6 col-lg-offset-3">
                             <h3>Your team isn't there? Create One!</h3>
                             <p>
-                                <a className="btn btn-default btn-lg btn-block" href="http://localhost:3000/createTeam" role="button">Create Team</a>
+                                <a className="btn btn-default btn-lg btn-block" href="/createTeam" role="button">Create Team</a>
                             </p>
                         </div>
                     </div>
@@ -141,6 +157,7 @@ class CreatePlayer extends Component{
                                     }
                                 </Modal.Body>
                                 <Modal.Footer>
+                                    <Button bsStyle="primary">Submit Players</Button>
                                     <Button onClick={this.close}>Close</Button>
                                 </Modal.Footer>
                             </Modal>

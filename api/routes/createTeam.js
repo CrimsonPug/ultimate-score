@@ -76,4 +76,13 @@ router.post('/addPlayer',(req,res)=>{
     }
 })
 
+//get request fetch all team for create players page
+router.get('/teams',(req,res)=>{
+    Team
+	.fetchAll()
+	.then(teams => {
+		res.json(teams.models.map(team => team.attributes))
+	})
+})
+
 module.exports = router;
