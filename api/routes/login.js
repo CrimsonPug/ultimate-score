@@ -76,6 +76,7 @@ router.get('/privatedata', authorize, (req,res)=>{
     // TASK 5: This endpoint should require that all requests to this endpoint pass through the middleware created in the previous task.
     
     console.log(req.decoded.username);
+    console.log('logged in')
     // TASK 6: If the request passes through the middleware and makes it to this endpoint, send back the username that was stored in the token. 
 
     res
