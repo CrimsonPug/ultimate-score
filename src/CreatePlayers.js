@@ -10,6 +10,8 @@ class CreatePlayer extends Component{
             addPlayer:[],
             showModal:false,
             teams: [],
+            chosenTeam:null,
+            chosenTeamName:null,
             playerName:null,
             squadNumber:null
         })
@@ -17,6 +19,7 @@ class CreatePlayer extends Component{
         this.txtFieldChange = this.txtFieldChange.bind(this)
         this.close = this.close.bind(this)
         this.open = this.open.bind(this)
+        this.pickTeam = this.pickTeam.bind(this)
     }
     close() {
         this.setState({ 
@@ -27,6 +30,12 @@ class CreatePlayer extends Component{
         this.setState({ 
                 showModal: true 
             });
+    }
+    pickTeam(e){
+        console.log(e.target.value)
+        this.setState({
+            chosenTeam:e.target.value,
+        })
     }
     txtFieldChange(e){
         if(e.target.name === "playerName"){
@@ -43,20 +52,23 @@ class CreatePlayer extends Component{
         console.log('added')
         let newAttribute = {
             playerName:this.state.playerName,
-            squadNumber:this.state.squadNumber
+            squadNumber:this.state.squadNumber,
+            open_team_id:this.state.teams[this.state.chosenTeam].id,
+            team_name:this.state.teams[this.state.chosenTeam].team_name
         }
         this.state.addPlayer.push(newAttribute)
         console.log(this.state.addPlayer)
         this.setState({
             playerName:null,
-            squadNumber:null
+            squadNumber:null,
+            chosenTeamName:newAttribute.team_name
         })
         document.getElementById("form").reset();
     }
     componentDidMount(){
         axios.get('/createTeam/teams')
         .then((res) =>{
-            console.log('fetching teams')
+            console.log(res.data)
             this.setState({
                 teams:res.data
             })
@@ -65,8 +77,7 @@ class CreatePlayer extends Component{
     render(){
         const tooltip = (
                     <Tooltip id="tooltip">Add more players</Tooltip>
-                    );
-        
+                    );      
         return(
             <div>
                 <div className="banner create-match">
@@ -82,7 +93,7 @@ class CreatePlayer extends Component{
                                 <h2>Select Your Team</h2>
                             </div>
                             <div className="panel-footer">
-                                <select className="form-control">
+                                <select onChange={this.pickTeam} value={this.state.team} className="form-control">
                                     {   
                                         this.state.teams.map((team,i)=>{
                                             return (
@@ -146,7 +157,7 @@ class CreatePlayer extends Component{
                                 </Modal.Header>
                                 <Modal.Body>
                                     <h4>Team Name</h4>
-                                    <p>Furious George</p>
+                                    <p>{this.state.chosenTeamName}</p>
                                     <hr />
                                     <h4>Team Roster</h4>
                                     {  this.state.addPlayer.map((player)=>{
