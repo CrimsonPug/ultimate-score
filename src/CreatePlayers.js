@@ -6,12 +6,25 @@ class CreatePlayer extends Component{
     constructor(){
         super();
         this.state = ({
-            addPlayer:[],           
+            addPlayer:[],
+            showModal:false,
             playerName:null,
             squadNumber:null
         })
         this.addPlayer = this.addPlayer.bind(this)
         this.txtFieldChange = this.txtFieldChange.bind(this)
+        this.close = this.close.bind(this)
+        this.open = this.open.bind(this)
+    }
+    close() {
+        this.setState({ 
+                showModal: false 
+            })
+    }
+    open() {
+        this.setState({ 
+                showModal: true 
+            });
     }
     txtFieldChange(e){
         if(e.target.name === "playerName"){
@@ -42,6 +55,7 @@ class CreatePlayer extends Component{
         const tooltip = (
                     <Tooltip id="tooltip">Add more players</Tooltip>
                     );
+        
         return(
             <div>
                 <div className="banner create-match">
@@ -68,7 +82,7 @@ class CreatePlayer extends Component{
                         <div className="col-lg-6 col-lg-offset-3">
                             <h3>Your team isn't there? Create One!</h3>
                             <p>
-                                <a className="btn btn-default btn-lg btn-block" href="/createTeam" role="button">Create Team</a>
+                                <a className="btn btn-default btn-lg btn-block" href="http://localhost:3000/createTeam" role="button">Create Team</a>
                             </p>
                         </div>
                     </div>
@@ -109,7 +123,27 @@ class CreatePlayer extends Component{
                     <div className="row">
                         <div className="col-lg-6 col-lg-offset-3">
                             <h3>All Set? Let's get going!</h3>
-                            <button type="button" className="btn btn-primary btn-lg btn-block">Review Player</button>
+                            <button onClick={this.open} type="button" className="btn btn-primary btn-lg btn-block">Review Player</button>
+                            <Modal show={this.state.showModal} onHide={this.close}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Review your roster</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <h4>Team Name</h4>
+                                    <p>Furious George</p>
+                                    <hr />
+                                    <h4>Team Roster</h4>
+                                    {  this.state.addPlayer.map((player)=>{
+                                        return(
+                                    <p>#{player.squadNumber} {player.playerName}</p>
+                                        )    
+                                    })    
+                                    }
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button onClick={this.close}>Close</Button>
+                                </Modal.Footer>
+                            </Modal>
                         </div>
                     </div>
                 </div>
