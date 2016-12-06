@@ -20,6 +20,18 @@ class CreatePlayer extends Component{
         this.close = this.close.bind(this)
         this.open = this.open.bind(this)
         this.pickTeam = this.pickTeam.bind(this)
+        this.savePlayers = this.savePlayers.bind(this)
+    }
+    savePlayers(){
+        console.log(this.state.addPlayer)
+        this.setState({ 
+                showModal: false 
+            })
+        axios.post('/createTeam/addPlayer',this.state.addPlayer)
+        .then((res)=>{
+            console.log(res.data)
+        })
+
     }
     close() {
         this.setState({ 
@@ -51,8 +63,8 @@ class CreatePlayer extends Component{
     addPlayer(e){
         console.log('added')
         let newAttribute = {
-            playerName:this.state.playerName,
-            squadNumber:this.state.squadNumber,
+            name:this.state.playerName,
+            squad_number:this.state.squadNumber,
             open_team_id:this.state.teams[this.state.chosenTeam].id,
             team_name:this.state.teams[this.state.chosenTeam].team_name
         }
@@ -163,13 +175,13 @@ class CreatePlayer extends Component{
                                     <h4>Team Roster</h4>
                                     {  this.state.addPlayer.map((player)=>{
                                         return(
-                                    <p>#{player.squadNumber} {player.playerName}</p>
+                                    <p>#{player.squad_number} {player.name}</p>
                                         )    
                                     })    
                                     }
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button bsStyle="primary">Submit Players</Button>
+                                    <Button onClick={this.savePlayers} bsStyle="primary">Submit Players</Button>
                                     <Button onClick={this.close}>Close</Button>
                                 </Modal.Footer>
                             </Modal>
