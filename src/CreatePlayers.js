@@ -5,12 +5,43 @@ import './create.css';
 class CreatePlayer extends Component{
     constructor(){
         super();
-
+        this.state = ({
+            addPlayer:[],           
+            playerName:null,
+            squadNumber:null
+        })
+        this.addPlayer = this.addPlayer.bind(this)
+        this.txtFieldChange = this.txtFieldChange.bind(this)
+    }
+    txtFieldChange(e){
+        if(e.target.name === "playerName"){
+            this.state.playerName = e.target.value
+        }else if(e.target.name === "squadNumber"){
+            this.state.squadNumber = e.target.value
+        }
+        this.setState({
+        playerName:this.state.playerName,
+        squadNumber:this.state.squadNumber
+    });
+    }
+    addPlayer(e){
+        console.log('added')
+        let newAttribute = {
+            playerName:this.state.playerName,
+            squadNumber:this.state.squadNumber
+        }
+        this.state.addPlayer.push(newAttribute)
+        console.log(this.state.addPlayer)
+        this.setState({
+            playerName:null,
+            squadNumber:null
+        })
+        document.getElementById("form").reset();
     }
     render(){
         const tooltip = (
                     <Tooltip id="tooltip">Add more players</Tooltip>
-)                       ;
+                    );
         return(
             <div>
                 <div className="banner create-match">
@@ -47,17 +78,29 @@ class CreatePlayer extends Component{
                                 <h2>Players Form</h2>
                             </div>
                             <div className="panel-footer">
-                                <form className="form-inline">
+                                <form id="form" className="form-inline">
                                     <div className="form-group">
                                         <label for="exampleInputName2">Name</label>
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
+                                        <input 
+                                            onChange={this.txtFieldChange}
+                                            type="text" 
+                                            className="form-control" 
+                                            id="exampleInputName2"
+                                            name="playerName" 
+                                            placeholder="Player Name..."/>
                                     </div>
                                     <div className="form-group">
                                         <label for="squadNumber">Squad Number</label>
-                                        <input type="email" className="form-control" id="squadNumber" placeholder="11"/>
+                                        <input 
+                                            onChange={this.txtFieldChange} 
+                                            type="text" 
+                                            className="form-control" 
+                                            id="squadNumber"
+                                            name="squadNumber" 
+                                            placeholder="11"/>
                                     </div>
                                     <OverlayTrigger placement="top" overlay={tooltip}>
-                                        <Button bsStyle="default">+</Button>
+                                        <Button onClick={this.addPlayer} bsStyle="default">+</Button>
                                     </OverlayTrigger>
                                 </form>                               
                             </div>

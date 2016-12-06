@@ -31,7 +31,7 @@ class Score extends Component {
                                 onClick={this.handleHomeScore}
                                 className="btn score-btn btn-success"
                                 >
-                                Lol!
+                                Score!
                         </button>
                     </div>             
                     <div className="away-btn">

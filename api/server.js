@@ -20,9 +20,11 @@ app.use(function(req, res, next) {
 });
 
 const loginRoutes = require('./routes/login');
+const createTeamRoutes = require('./routes/createTeam');
 const openPlayersRoutes = require('./routes/open_players');
 
 app.use('/login', loginRoutes);
+app.use('/createTeam', createTeamRoutes);
 app.use('/openPlayers', openPlayersRoutes);
 
 
