@@ -81,6 +81,7 @@ router.get('/teams',(req,res)=>{
     Team
 	.fetchAll()
 	.then(teams => {
+        console.log('meh')
 		res.json(teams.models.map(team => team.attributes))
 	})
 })
