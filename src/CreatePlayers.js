@@ -53,15 +53,15 @@ class CreatePlayer extends Component{
         })
         document.getElementById("form").reset();
     }
-    componentDidMount(){
-        axios.get('/teams')
-        .then((res) =>{
-            console.log('fetching teams')
-            this.setState({
-                teams:res.data
-            })
-        })
-    }
+    // componentDidMount(){
+    //     axios.get('/teams')
+    //     .then((res) =>{
+    //         console.log('fetching teams')
+    //         this.setState({
+    //             teams:res.data
+    //         })
+    //     })
+    // }
     render(){
         const tooltip = (
                     <Tooltip id="tooltip">Add more players</Tooltip>
