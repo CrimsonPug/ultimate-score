@@ -56,7 +56,7 @@ class CreatePlayer extends Component{
     componentDidMount(){
         axios.get('/teams')
         .then((res) =>{
-            console.log(res.data)
+            console.log('fetching teams')
             this.setState({
                 teams:res.data
             })
