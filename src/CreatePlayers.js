@@ -94,6 +94,7 @@ class CreatePlayer extends Component{
                             </div>
                             <div className="panel-footer">
                                 <select onChange={this.pickTeam} value={this.state.team} className="form-control">
+                                    <option>Choose a team...</option>
                                     {   
                                         this.state.teams.map((team,i)=>{
                                             return (
