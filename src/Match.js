@@ -176,7 +176,7 @@ class Match extends Component {
             for (let i = 0; i<roster.length;i++){
                 if (roster[i].teamid === 2){
                     homeTeam.push(roster[i])
-                }else{
+                }else if(roster[i].teamid === 1){
                     awayTeam.push(roster[i])
                 }
             }
