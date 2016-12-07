@@ -29,7 +29,25 @@ const Team = bookshelf.Model.extend({
 const Match = bookshelf.Model.extend({
     tableName: 'open-matches', 
 })
-
+//adding new match into the database
+router.post('/addMatch',(req,res)=>{
+    console.log(req.body)
+    const newMatch = new Match({
+        home_team_id:req.body.homeTeamId,
+        away_team_id:req.body.awayTeamId,
+        home_team:req.body.homeTeam,
+        away_team:req.body.awayTeam,
+        final_score:"0-0",
+        home_stats:"[]",
+        away_stats:"[]",
+    })
+    console.log(newMatch.home_team)
+    newMatch.save() 
+    .then(match =>{
+        res.json(match)
+    })
+})
+//adding new team into the database
 router.post('/addTeam',(req,res)=>{
     console.log(req.body)
     if (req.body.team_name === undefined){
