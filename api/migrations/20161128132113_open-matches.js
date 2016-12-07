@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
         table.string('final_score');
         table.string('home_stats');
         table.string('away_stats');
+        table.integer('user_id')
     })
 };
 

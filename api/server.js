@@ -25,7 +25,7 @@ const openPlayersRoutes = require('./routes/open_players');
 
 app.use('/login', loginRoutes);
 app.use('/createTeam', createTeamRoutes);
-app.use('/openPlayers', openPlayersRoutes);
+app.use('/openPlayers', openPlayersRoutes); 
 
 
 

@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
         table.string('username') // adds a string column
             .unique() // which has to be unique
             .notNullable(); // and is required
-        table.string('password').unique().notNullable()
+        table.string('password').unique().notNullable();
     })
 };
 
