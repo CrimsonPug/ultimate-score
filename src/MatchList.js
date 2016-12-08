@@ -36,7 +36,7 @@ class MatchList extends Component{
                     {
                         this.state.match.map((match)=>{
                             return(
-                                <a class="match-link" href="http://localhost:3000/match/">
+                                <a class="match-link" href="/match">
                                     <div className="well" id={match.matchID}>{match.matchDescription}</div>
                                 </a>
                             )

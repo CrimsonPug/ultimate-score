@@ -29,6 +29,14 @@ const Team = bookshelf.Model.extend({
 const Match = bookshelf.Model.extend({
     tableName: 'open-matches', 
 })
+//retrieve all the matches on dashboard page
+router.get('/allMatch',(req,res)=>{
+    Match
+	.fetchAll()
+	.then(matches => {
+		res.json(matches.models.map(match => match.attributes))
+	})
+})
 //adding new match into the database
 router.post('/addMatch',(req,res)=>{
     console.log(req.body)
