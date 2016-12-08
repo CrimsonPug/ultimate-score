@@ -11,7 +11,7 @@ class MatchList extends Component{
     
     }
     componentDidMount(){
-        axios.get('http://localhost:3005/createTeam/allMatch')
+        axios.get('/createTeam/allMatch')
         .then((res)=>{
             let matchArr = [];
             for(let i=0; i<res.data.length; i++){
