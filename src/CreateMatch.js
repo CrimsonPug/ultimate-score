@@ -131,7 +131,9 @@ class CreateMatch extends Component{
                     <div className="row">
                         <div className="col-lg-6 col-lg-offset-3">
                             <h3>Your team isn't here? Create one!</h3>
-                            <button type="button" className="btn btn-default btn-lg btn-block">Create Team</button>
+                            <Link to="/createTeam">
+                                <button type="button" className="btn btn-default btn-lg btn-block">Create Team</button>
+                            </Link>                        
                         </div>
                     </div>    
                     <div className="row">
