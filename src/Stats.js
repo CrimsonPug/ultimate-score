@@ -105,7 +105,7 @@ class Stats extends Component{
     componentDidUpdate(prevProps,prevState){
         if (prevProps.currentScore !== this.props.currentScore){
         let genericId = ({
-            matchId: 1
+            matchId: localStorage.matchId
         })
         axios
         .post('/openPlayers/stats',genericId)
@@ -125,7 +125,7 @@ class Stats extends Component{
     }
     componentDidMount(){
         let genericId = ({
-            matchId: 1
+            matchId:localStorage.matchId
         })
         axios
         .post('/openPlayers/stats',genericId)

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 import axios from 'axios';
 import './App.css';
 
@@ -8,7 +9,10 @@ class MatchList extends Component{
         this.state = ({
             match:[]
         })
-    
+        this.saveMatch = this.saveMatch.bind(this)
+    }
+    saveMatch(match){ 
+        localStorage.matchId = match.matchID
     }
     componentDidMount(){
         axios.get('/createTeam/allMatch')
@@ -36,9 +40,9 @@ class MatchList extends Component{
                     {
                         this.state.match.map((match)=>{
                             return(
-                                <a class="match-link" href="/match">
-                                    <div className="well" id={match.matchID}>{match.matchDescription}</div>
-                                </a>
+                                <Link to="/match">
+                                    <div className="well" onClick={()=>this.saveMatch(match)} value={match.matchID}>{match.matchDescription}</div>
+                                </Link>
                             )
                         })
                     }
