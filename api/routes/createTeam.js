@@ -60,11 +60,17 @@ router.post('/addTeam',(req,res)=>{
     console.log(req.body)
     if (req.body.team_name === undefined){
         res.send('Please fill in the name')
-    }else { 
+    }else {
+        let saveLogo;
+        if (req.body.team_logo === null){
+            saveLogo = "http://all4ed.org/wp-content/themes/all4ed/assets/images/avatar-placeholder-generic.png"
+        }else{
+            saveLogo = req.body.team_logo
+        }
         const newTeam = new Team({
             team_name:req.body.team_name,
             abbr:req.body.abbr,
-            team_logo:req.body.team_logo
+            team_logo:saveLogo
         })
         newTeam.save()
         .then(team =>{

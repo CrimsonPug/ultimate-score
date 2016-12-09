@@ -164,8 +164,28 @@ router.post('/',(req,res)=>{
             .fetch()   
         }
         ).then(match => {
-                console.log
-                res.json({
+                Team 
+                .where('id','IN',[match.attributes.home_team_id,match.attributes.away_team_id])
+                .fetchAll()
+                .then(teams =>{
+                    let data = teams.models.map(team => team.attributes)
+                    let packageData = {
+                        homeAbbr:null,
+                        homeLogo:null,
+                        awayAbbr:null,
+                        awayLogo:null
+                    };
+                    for (let i=0; i<data.length; i++){
+                        if (data[i].id === match.attributes.home_team_id){
+                                packageData.homeAbbr= data[i].abbr
+                                packageData.homeLogo= data[i].team_logo           
+                        }else{                   
+                                packageData.awayAbbr=data[i].abbr
+                                packageData.awayLogo=data[i].team_logo                        
+                        }
+                    }                
+                    res.json({
+                    scoreboardData:packageData,
                     currentScore:match.attributes.final_score,
                     matchId:match.attributes.id,
                     homeTeam:match.attributes.home_team,

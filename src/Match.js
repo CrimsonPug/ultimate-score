@@ -17,6 +17,7 @@ class Match extends Component {
             homeTeam:null,
             awayTeam:null,
             homeTeamId:null,
+            scoreboardData:null,
             awayTeamId:null,
             homeShow:false,
             awayShow:false,
@@ -189,6 +190,7 @@ class Match extends Component {
             this.setState({
                 loading:false,
                 match:res.data.matchId,
+                scoreboardData:res.data.scoreboardData,
                 homeTeam:res.data.homeTeam,
                 awayTeam:res.data.awayTeam,
                 homeTeamId:res.data.homeTeamId,
@@ -216,7 +218,8 @@ class Match extends Component {
                     <Scoreboard  
                         currentScore = {this.state.currentScore}
                         homeTeam = {this.state.homeTeam}
-                        awayTeam = {this.state.awayTeam} />
+                        awayTeam = {this.state.awayTeam}
+                        scoreboardData = {this.state.scoreboardData} />
                         
                     <Score 
                         gameOver={this.state.gameOver} 
