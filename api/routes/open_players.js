@@ -193,6 +193,7 @@ router.post('/',(req,res)=>{
                     homeTeamId:match.attributes.home_team_id,
                     awayTeamId:match.attributes.away_team_id,
                     roster:roster})
+                })
         }) 
 
 })
