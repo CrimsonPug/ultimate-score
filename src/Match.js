@@ -160,8 +160,9 @@ class Match extends Component {
             }
     }
     componentWillMount(){
+
         let genericId = ({
-            matchId:1
+            matchId:localStorage.matchId
         })
         axios
         .post('/openPlayers/',genericId)
