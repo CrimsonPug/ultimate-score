@@ -11,9 +11,13 @@ class Match extends Component {
     constructor(){
         super();
         this.state = {
-            match: 1,
+            match: null,
             loading:true,
             team: '',
+            homeTeam:null,
+            awayTeam:null,
+            homeTeamId:null,
+            awayTeamId:null,
             homeShow:false,
             awayShow:false,
             homeCounter: 0,
@@ -35,7 +39,6 @@ class Match extends Component {
         this.gameOver = this.gameOver.bind(this)
     }
     gameOver(){
-        console.log('game over clicked')
         confirm('Are you sure?')
         if (this.state.homeCounter > this.state.awayCounter){
             alert('Home team wins!')
@@ -66,8 +69,8 @@ class Match extends Component {
         let newHomeCounter = this.state.homeCounter +1;
         let saveData = {
             homeCounter: newHomeCounter,
-            team:2,
-            match: '1',
+            team:this.state.homeTeamId,
+            match: this.state.match,
             currentScore : newHomeCounter + '-' + this.state.awayCounter,
             scorer: scorer,
             assist:assist
@@ -76,7 +79,6 @@ class Match extends Component {
             .put('/openPlayers/putScoreHome',saveData)
             .then((res) => {
                 this.setState({
-                    team:2,
                     homeCounter: newHomeCounter,
                     currentScore: newHomeCounter + '-' + this.state.awayCounter,                        
                     homeShow: !this.state.homeShow,
@@ -90,8 +92,8 @@ class Match extends Component {
         let newAwayCounter = this.state.awayCounter +1;
         let saveData = {
             awayCounter: newAwayCounter,
-            team:1,
-            match: '1',
+            team:this.state.awayTeamId,
+            match: this.state.match,
             currentScore : this.state.homeCounter + '-' + newAwayCounter,
             scorer: scorer,
             assist:assist
@@ -100,7 +102,6 @@ class Match extends Component {
             .put('/openPlayers/putScoreAway',saveData)
             .then((res) => {
                 this.setState({
-                    team:1,
                     awayCounter: newAwayCounter,
                     currentScore : this.state.homeCounter + '-' + newAwayCounter,
                     awayShow: !this.state.awayShow,
@@ -159,9 +160,13 @@ class Match extends Component {
             }
     }
     componentWillMount(){
+        let genericId = ({
+            matchId:1
+        })
         axios
-        .get('/openPlayers/')
+        .post('/openPlayers/',genericId)
         .then((res)=> { 
+            console.log(res.data)
             let currentScore = res.data.currentScore;
             //splitting the score(string) and turn it into integer
             let splitScore = currentScore.split("-");
@@ -174,14 +179,19 @@ class Match extends Component {
             let homeTeam =[];
             let awayTeam =[];
             for (let i = 0; i<roster.length;i++){
-                if (roster[i].teamid === 2){
+                if (roster[i].teamid === res.data.homeTeamId){
                     homeTeam.push(roster[i])
-                }else if(roster[i].teamid === 1){
+                }else if (roster[i].teamid === res.data.awayTeamId){
                     awayTeam.push(roster[i])
                 }
             }
             this.setState({
                 loading:false,
+                match:res.data.matchId,
+                homeTeam:res.data.homeTeam,
+                awayTeam:res.data.awayTeam,
+                homeTeamId:res.data.homeTeamId,
+                awayTeamId:res.data.awayTeamId,
                 homeRoster: homeTeam,
                 awayRoster: awayTeam,
                 currentScore: currentScore,
@@ -202,29 +212,40 @@ class Match extends Component {
         return(
             <div>
                 <div>
-                    <Scoreboard  currentScore = {this.state.currentScore} />
+                    <Scoreboard  
+                        currentScore = {this.state.currentScore}
+                        homeTeam = {this.state.homeTeam}
+                        awayTeam = {this.state.awayTeam} />
                         
-                    <Score gameOver={this.state.gameOver} handleAwayScore={this.handleAwayScore} handleHomeScore={this.handleHomeScore}/>
+                    <Score 
+                        gameOver={this.state.gameOver} 
+                        handleAwayScore={this.handleAwayScore} 
+                        handleHomeScore={this.handleHomeScore}/>
                 </div>
-                <Menu   loading={this.state.loading}
-                        scorer={this.state.scorer}
-                        assist={this.state.assist}
-                        updateStats={this.updateStats}
-                        homeShow={this.state.homeShow} 
-                        awayShow={this.state.awayShow}
-                        homeRoster={this.state.homeRoster}
-                        awayRoster={this.state.awayRoster} 
-                        handleClose={this.handleClose}
-                        submitHomeScore={this.submitHomeScore}
-                        submitAwayScore={this.submitAwayScore}
-                />
-                <Stats currentScore = {this.state.currentScore}
-                       homeRoster={this.state.homeRoster}
-                       awayRoster={this.state.awayRoster}
-                       handleHomeDelete = {this.handleHomeDelete}
-                       handleDelete = {this.handleDelete}
-                       match = {this.state.match}
-                        />
+                <Menu   
+                    loading={this.state.loading}
+                    scorer={this.state.scorer}
+                    assist={this.state.assist}
+                    updateStats={this.updateStats}
+                    homeShow={this.state.homeShow} 
+                    awayShow={this.state.awayShow}
+                    homeRoster={this.state.homeRoster}                        awayRoster={this.state.awayRoster} 
+                    handleClose={this.handleClose}
+                    submitHomeScore={this.submitHomeScore}
+                    submitAwayScore={this.submitAwayScore}/>
+
+                <Stats 
+                    currentScore = {this.state.currentScore}
+                    homeTeam = {this.state.homeTeam}
+                    awayTeam = {this.state.awayTeam}
+                    homeTeamId = {this.state.homeTeamId}
+                    awayTeamId = {this.state.awayTeamId}
+                    homeRoster={this.state.homeRoster}
+                    awayRoster={this.state.awayRoster}
+                    handleHomeDelete = {this.handleHomeDelete}
+                    handleDelete = {this.handleDelete}
+                    match = {this.state.match} />
+                        
                 <div className="well" style={wellStyles}>
                     <Button bsStyle="primary" onClick={this.gameOver} bsSize="large" block>Game Over!</Button>
                 </div>

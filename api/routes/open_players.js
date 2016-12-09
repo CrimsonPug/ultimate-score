@@ -55,6 +55,7 @@ router.get('/find',(req,res)=>{
 
 //home team update  stats operation in Stats.js in front end
 router.put('/putScoreHome',(req,res)=>{
+    console.log(req.body)
     //setting up goal property for open_teams table
     let updateHomeGoal = {
             goals: req.body.homeCounter
@@ -73,7 +74,7 @@ router.put('/putScoreHome',(req,res)=>{
             //finding the stats of the match to be updated
              Match
                 .where({id:req.body.match})
-                .fetch()
+                .fetch() 
                 .then((match)=>{
                     //parsing the stringify array
                     let home_stats = JSON.parse(match.attributes.home_stats)
@@ -87,12 +88,12 @@ router.put('/putScoreHome',(req,res)=>{
                         home_stats:storeStats
                     }
                     //save that new data
-                    new Match({id: 1})
+                    new Match({id: req.body.match})
                     .save(updateHomeStats, {patch:true})
                     .then((score)=>{
                         res.json(team.attributes)   
                     })
-                })                 
+                })                  
         })
 })
 
@@ -130,7 +131,7 @@ router.put('/putScoreAway',(req,res)=>{
                         away_stats:storeStats
                     }
                     //save that new data
-                    new Match({id: 1})
+                    new Match({id: req.body.match})
                     .save(updateAwayStats, {patch:true})
                     .then((score)=>{
                         res.json(team.attributes)
@@ -142,7 +143,8 @@ router.put('/putScoreAway',(req,res)=>{
 
 //operation or request to alter the team or database
 //retrieving all the players
-router.get('/',(req,res)=>{
+router.post('/',(req,res)=>{
+    console.log(req.body)
     let roster = [];
     Player
         .fetchAll() 
@@ -156,14 +158,21 @@ router.get('/',(req,res)=>{
                 return name_age;  
             })
         })
-
         .then( ()=>{
             return Match
-            .where({id:1})
+            .where({id:req.body.matchId})
             .fetch()   
         }
         ).then(match => {
-                res.json({currentScore:match.attributes.final_score,roster:roster})
+                console.log
+                res.json({
+                    currentScore:match.attributes.final_score,
+                    matchId:match.attributes.id,
+                    homeTeam:match.attributes.home_team,
+                    awayTeam:match.attributes.away_team,
+                    homeTeamId:match.attributes.home_team_id,
+                    awayTeamId:match.attributes.away_team_id,
+                    roster:roster})
         }) 
 
 })
@@ -182,9 +191,10 @@ router.get('/match', (req,res) => {
     })
 })
 //retrieving the score and assist stats
-router.get('/stats', (req,res) => {
+router.post('/stats', (req,res) => {
+
     Match
-    .where({id:1})
+    .where({id:req.body.matchId})
     .fetch()
     .then(stats => {
         let homeStats = JSON.parse(stats.attributes.home_stats);
@@ -195,8 +205,7 @@ router.get('/stats', (req,res) => {
         }
         // console.log(matchStats)
         res.json(matchStats)
-    })
-    
+    })  
 })
 //deleting stats
 router.put('/deleteStats',(req,res)=>{  
@@ -271,7 +280,6 @@ router.put('/deleteHomeStats',(req,res)=>{
 })
 //edit team stats
 router.put('/editStats',(req,res) =>{
-    console.log(req.body.match)
     Match
         .where({id:req.body.match})
         .fetch()

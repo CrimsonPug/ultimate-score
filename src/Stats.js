@@ -50,8 +50,8 @@ class Stats extends Component{
             match: this.props.match,
             editScore: this.state.editScore,
             scorer:this.state.scorer,
-            assist:'#'+ this.state.roster[this.state.assist].squadNumber+ ' ' +this.state.roster[this.state.assist].name,
-            team: this.state.roster[this.state.assist].teamid
+            assist:this.state.roster[this.state.assist].name,
+            team:this.state.roster[this.state.assist].teamid
         }
         axios
         .put('/openPlayers/editStats',updatedStats)
@@ -62,27 +62,24 @@ class Stats extends Component{
         this.setState({
              showModal: false 
             })
-    location.href ="/match";
+        location.href ="/match";
     }
     open(stats){
         
-        if (stats.teamId === 1){
+        if (stats.teamId === this.props.awayTeamId){
             this.setState({
                 editScore: stats.currentScore,
                 showModal: true, 
                 roster: this.props.awayRoster
-                })
-                
+                })               
         }else {
             this.setState({
                 roster:this.props.homeRoster,
                 editScore: stats.currentScore,
-                showModal: true, 
-                
+                showModal: true,                 
             })
         }
-    }    
-            
+    }          
     handleDelete(e){
         this.setState({
             deleteScore: e.target.value
@@ -107,8 +104,11 @@ class Stats extends Component{
     // }
     componentDidUpdate(prevProps,prevState){
         if (prevProps.currentScore !== this.props.currentScore){
+        let genericId = ({
+            matchId: 1
+        })
         axios
-        .get('/openPlayers/stats')
+        .post('/openPlayers/stats',genericId)
         .then((res) => {
             console.log('fuck yea')
             let homeStats = res.data.home;
@@ -120,12 +120,15 @@ class Stats extends Component{
             })
         })
         }else{
-            // console.log('hell no')
+            console.log('hell no')
         }
     }
     componentDidMount(){
+        let genericId = ({
+            matchId: 1
+        })
         axios
-        .get('/openPlayers/stats')
+        .post('/openPlayers/stats',genericId)
         .then((res) => {
             console.log('componentDidMount in Stats executed')
             let homeStats = res.data.home;
@@ -154,11 +157,10 @@ class Stats extends Component{
         
         return(
             <div className="stats-container">
-                <h3>Stats Here!</h3>
                 <div className="row">
                 <h3>Stats Here!</h3>
                 <div className="home-stats col-md-6 col-xs-12">
-                    <h4>Alberta Flatball Club</h4>
+                    <h4>{this.props.homeTeam}</h4>
                     <table className="table table-hover">
                         <thead>
                             <tr>
@@ -222,7 +224,7 @@ class Stats extends Component{
                                         </Modal.Footer>
                             </Modal>
                 <div className="away-stats col-md-6 col-xs-12">
-                    <h4>Brainstation Ultimate Club</h4>
+                    <h4>{this.props.awayTeam}</h4>
                     <table className="table table-hover">
                         <thead>
                             <tr>

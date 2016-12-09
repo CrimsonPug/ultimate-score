@@ -2,25 +2,11 @@ import React, { Component } from 'react';
 import './match.css';
 import axios from 'axios';
 class ScoreBoard extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            currentScore: 0-0,
-            homeTeam: '',
-            awayTeam: ''
+            currentScore: this.props.currentScore,
         }
-    }
-    componentDidMount(){
-        axios
-        .get('/openPlayers/match')
-        .then((res) => {
-            // console.log('componentDidMount in Scoreboard executed')
-            this.setState({
-                currentScore:res.data.score,
-                homeTeam:res.data.homeTeam,
-                awayTeam:res.data.awayTeam,
-            })
-        })
     }
     componentDidUpdate(prevProps){
         if (prevProps.currentScore !== this.props.currentScore){
@@ -34,7 +20,6 @@ class ScoreBoard extends Component{
         })
         }
     }
-
     render(){
         return(
             <div className="jumbotron row">
@@ -46,12 +31,12 @@ class ScoreBoard extends Component{
                                     src="https://pbs.twimg.com/profile_images/558112868865155072/NMa8K0Tn_400x400.jpeg"/>
                             </div>
                             <div className="homes name">
-                                <h3 className="visible-lg title visible-md hidden-xs visible-sm">{this.state.homeTeam}</h3>
-                                <h3 className=" visible-xs title hidden-md hidden-lg hidden-sm">AFC</h3>
+                                <h3 className="visible-lg title visible-md hidden-xs visible-sm">{this.props.homeTeam}</h3>
+                                <h3 className="visible-xs title hidden-md hidden-lg hidden-sm">AFC</h3>
                             </div>
                             </div>
                             <div className="scoreContainer team">
-                                <h2>{this.state.currentScore}</h2>
+                                <h2>{this.props.currentScore}</h2>
                             </div>
                             <div className="team">
                             <div className="aways logo">
@@ -59,7 +44,7 @@ class ScoreBoard extends Component{
                                         src="https://pbs.twimg.com/profile_images/658310539861479424/RRT0w90e.png"/>
                             </div>
                             <div className="aways name">
-                                <h3 className="visible-lg title visible-md hidden-sm hidden-xs">{this.state.awayTeam}</h3>
+                                <h3 className="visible-lg title visible-md hidden-sm hidden-xs">{this.props.awayTeam}</h3>
                                 <h3 className="visible-sm title visible-xs hidden-md hidden-lg">BSt</h3>
                             </div>
                     </div>
