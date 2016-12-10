@@ -17,10 +17,6 @@
     top:50%;
 }
 
-/*.btn{
-    z-index:1
-}*/
-
 .scoreboard{
     height: 80px;
     background-color:#04306B;
@@ -90,7 +86,7 @@ h2{
     /*display:inline-block;*/
 }
 
-.title{
+.team-title{
     color:white;
 }
 

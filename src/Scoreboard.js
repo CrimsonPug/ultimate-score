@@ -38,8 +38,8 @@ class ScoreBoard extends Component{
                                     src={this.props.scoreboardData.homeLogo}/>
                             </div>
                             <div className="homes name">
-                                <h3 className="visible-lg title visible-md hidden-xs visible-sm">{this.props.homeTeam}</h3>
-                                <h3 className="visible-xs title hidden-md hidden-lg hidden-sm">{this.props.scoreboardData.homeAbbr}</h3>
+                                <h3 className="visible-lg team-title visible-md hidden-xs visible-sm">{this.props.homeTeam}</h3>
+                                <h3 className="visible-xs team-title hidden-md hidden-lg hidden-sm">{this.props.scoreboardData.homeAbbr}</h3>
                             </div>
                             </div>
                             <div className="scoreContainer team">
@@ -51,8 +51,8 @@ class ScoreBoard extends Component{
                                         src={this.props.scoreboardData.awayLogo}/>
                             </div>
                             <div className="aways name">
-                                <h3 className="visible-lg title visible-md hidden-sm hidden-xs">{this.props.awayTeam}</h3>
-                                <h3 className="visible-sm title visible-xs hidden-md hidden-lg">{this.props.scoreboardData.awayAbbr}</h3>
+                                <h3 className="visible-lg team-title visible-md hidden-sm hidden-xs">{this.props.awayTeam}</h3>
+                                <h3 className="visible-sm team-title visible-xs hidden-md hidden-lg">{this.props.scoreboardData.awayAbbr}</h3>
                             </div>
                     </div>
                 </div>
