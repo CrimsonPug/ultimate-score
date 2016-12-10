@@ -21,8 +21,77 @@ body {
  .col-centered{
     float: none;
     margin: 0 auto;
+    text-align: center;
 }
-
-.hero1{
+.hero{
+  width:100%;
+  height:600px;
+  background-image: url('https://d36m266ykvepgv.cloudfront.net/uploads/media/CyAV9Ho6CT/s-1600-1068/the-pull-deepthi-indukuri-7424.jpg');
   background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  }
+.hero-filter{
+  width:100%;
+  height:100%;
+  background-color:rgb(18, 18, 18);
+  opacity:0.37;
+  z-index: 20;
+}
+.title-wrapper{
+  position:absolute;
+  top:20%;
+  left:10%;
+  z-index: 100;
+}
+.title{
+  color:white;
+  font-size: 51px;
+  font-family: adobe-clean,helvetica,arial,sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+.title-wrapper h5{
+  font-size:30px;
+}
+.description{
+  text-align: center;
+  height: 180px;
+}
+.description-wrapper{
+  width:60%;
+  margin:auto;
+}
+.description h2{
+  font-family: adobe-clean,helvetica,arial,sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.description p{
+  color: #b3b3b3;
+  font-size:1.8rem;
+}
+.feature-container{
+  margin:20px;
+}
+.col-lg-3{
+  text-align: center;
+}
+.icon{
+  width:20%;
+  height:20%;
+  opacity: 0.8;
+}
+.col-lg-3 h3{
+  font-family: adobe-clean,helvetica,arial,sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.col-lg-3 p{
+  color: #b3b3b3;
+}
+@media (max-width: 576px) {
+  .description{
+    height:335px;
+  }
 }
