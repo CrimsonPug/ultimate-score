@@ -1,64 +1,14 @@
-.drawer{
-    display:block;
-    width:50%;
-    position:absolute;
-    height:122%;
-    bottom:-22%;
-    /*right:100%;*/
-    background-color: black;
-    opacity:0.7;
-    transition: transform 0.8s;
-    z-index: 200;
-}
-
-.home{
-    right:100%;
-}
-
-.away{
-    left:100%;
-}
-.out{
-    transform: translateX(100%);
-}
-
-.in{
-    transform: translateX(0);
-}
-
-.awayout{
-    transform: translateX(-100%);
-}
-
-.glyphicon{
-    position:absolute;
-    right:20px;
-    top:20px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.remove-away{
-    left:20px
-}
-
-.submit-score{
-    position: absolute;
-    left:50%;
-    bottom:40%;
-}
-
-.player-container{
-    position: relative;
-    top:10%;
-    left:5%;
-}
-
-.player-btn{
-    margin-bottom:2%;
-}
-
-.select{
+.scoreBtn-container{
+    width:100%;
+    text-align: center;
     position:relative;
-    top:15%;
+    bottom:180px;
+}
+.home-score-btn{
+    position:relative;
+    right:10%;
+}
+.away-score-btn{
+    position:relative;
+    left:10%;
 }

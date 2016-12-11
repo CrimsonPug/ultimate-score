@@ -53,12 +53,11 @@ router.get('/find',(req,res)=>{
         })
 })
 
-//home team update  stats operation in Stats.js in front end
 router.put('/putScoreHome',(req,res)=>{
     console.log(req.body)
     //setting up goal property for open_teams table
     let updateHomeGoal = {
-            goals: req.body.homeCounter
+            goals: req.body.scoreCounter
         }
     //save the new goal for home team in the open_teams table
     new Team({id:req.body.team})
@@ -76,68 +75,44 @@ router.put('/putScoreHome',(req,res)=>{
                 .where({id:req.body.match})
                 .fetch() 
                 .then((match)=>{
-                    //parsing the stringify array
-                    let home_stats = JSON.parse(match.attributes.home_stats)
-                    //push the new object of the stats to update the stats
-                    home_stats.push(updateStats);
-                    //stringify it again to able to be saved as a string
-                    let storeStats = JSON.stringify(home_stats);
-                    //setting up the stats to be saved
-                    let updateHomeStats = {
-                        final_score: req.body.currentScore,
-                        home_stats:storeStats
-                    }
-                    //save that new data
-                    new Match({id: req.body.match})
-                    .save(updateHomeStats, {patch:true})
-                    .then((score)=>{
-                        res.json(team.attributes)   
-                    })
-                })                  
-        })
-})
 
-//away team update  stats operation in Stats.js in front end
-router.put('/putScoreAway',(req,res)=>{
-    //setting up goal property for open_teams table
-    let updateAwayGoal = {
-            goals: req.body.awayCounter
-        }
-    //save the new goal for away team in the open_teams table
-    new Team({id:req.body.team})
-        .save(updateAwayGoal, {patch:true})
-        .then(team => {
-            //setting up the scorer and assist for that particular point in an object
-            let updateStats= {
-                currentScore: req.body.currentScore,
-                scorer:req.body.scorer,
-                assist:req.body.assist,
-                teamId:req.body.team
-            }
-            //finding the match to be updated
-             Match
-                .where({id:req.body.match})
-                .fetch()
-                .then((match)=>{
-                    //parsing the stringify array
-                    let away_stats = JSON.parse(match.attributes.away_stats)
-                    //push the new object of the stats to update the stats
-                    away_stats.push(updateStats);
-                    //stringify it again to able to be saved as a string
-                    let storeStats = JSON.stringify(away_stats);
-                    //setting up the stats to be saved
-                    let updateAwayStats = {
-                        final_score: req.body.currentScore,
-                        away_stats:storeStats
-                    }
-                    //save that new data
-                    new Match({id: req.body.match})
-                    .save(updateAwayStats, {patch:true})
-                    .then((score)=>{
-                        res.json(team.attributes)
-                    })
-                })         
-            
+                    if (match.attributes.home_team_id === req.body.team){
+                        //parsing the stringify array
+                        let home_stats = JSON.parse(match.attributes.home_stats)
+                        //push the new object of the stats to update the stats
+                        home_stats.push(updateStats);
+                        //stringify it again to able to be saved as a string
+                        let storeStats = JSON.stringify(home_stats);
+                        //setting up the stats to be saved
+                        let saveStats = {
+                            final_score: req.body.currentScore,
+                            home_stats:storeStats
+                        }
+                        //save that new data
+                        new Match({id: req.body.match})
+                        .save(saveStats, {patch:true})
+                        .then((score)=>{
+                            res.json(team.attributes)   
+                        })
+                    }else{
+                        //parsing the stringify array
+                        let away_stats = JSON.parse(match.attributes.away_stats)
+                        //push the new object of the stats to update the stats
+                        away_stats.push(updateStats);
+                        //stringify it again to able to be saved as a string
+                        let storeStats = JSON.stringify(away_stats);
+                        //setting up the stats to be saved
+                        let saveStats = {
+                            final_score: req.body.currentScore,
+                            away_stats:storeStats
+                        }
+                        new Match({id: req.body.match})
+                        .save(saveStats, {patch:true})
+                        .then((score)=>{
+                            res.json(team.attributes)   
+                        })
+                    }                  
+                })                  
         })
 })
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Modal,Button,FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 import axios from 'axios';
 import './Menu.css';
 
@@ -6,105 +7,121 @@ class Menu extends Component{
     constructor(){
         super();
         this.state= {
-            iScorer:'',
-            iAssist:''
+            scorer:null,
+            assist:null,
+            showModal:false,
+            roster:[]
         }
-        this.handleClose = this.handleClose.bind(this)
-        this.submitHomeScore = this.submitHomeScore.bind(this)
-        this.submitAwayScore = this.submitAwayScore.bind(this)
-        this.handleScorer = this.handleScorer.bind(this)
-        this.handleAssist = this.handleAssist.bind(this)
+        this.openModal = this.openModal.bind(this)
+        this.close = this.close.bind(this)
+        this.submitScore = this.submitScore.bind(this)
+        this.changeAssist = this.changeAssist.bind(this)
+        this.changeScorer =this.changeScorer.bind(this)
     }
-     handleClose(){
-        this.props.handleClose();
-    }
-    submitHomeScore(e){
-        e.preventDefault();
-        this.props.submitHomeScore(this.state.iScorer,this.state.iAssist)
-    }
-    submitAwayScore(){
-        this.props.submitAwayScore(this.state.iScorer,this.state.iAssist)
-    }
-    handleScorer(e){
-        e.preventDefault();
+    changeAssist(e){
         this.setState({
-            iScorer: e.target.value
+            assist: e.target.value
         })
     }
-    handleAssist(e){
-        e.preventDefault();
+    changeScorer(e){
         this.setState({
-            iAssist: e.target.value
+            scorer: e.target.value
         })
     }
+    submitScore(){
+        let updatedStats = {
+            // match: this.props.match,
+            scorer:this.state.scorer,
+            assist:"#" + this.state.roster[this.state.assist].squadNumber + ' ' + this.state.roster[this.state.assist].name,
+            team:this.state.roster[this.state.assist].teamid
+        }
+        this.props.submitHomeScore(updatedStats)
+        this.setState({
+            showModal:false
+        })
+    }
+    openModal(e){
+        if (e.target.value == this.props.awayTeamId){
+            this.setState({
+                showModal: true, 
+                roster: this.props.awayRoster
+                })             
+        }else {
+            this.setState({
+                roster:this.props.homeRoster,
+                showModal: true,                 
+            })
+        }
+    }
+    close(){
+        this.setState({
+             showModal: false 
+            })
+  }
+
     render(){
-        if (this.props.loading){
-            console.log('loading')
+       if (this.props.gameOver === true){
             return(
-                <div>loading...</div>
+                <div className="Done">
+                    <h3>You're Done!</h3>
+                </div>
             )
         }else{
         let homeRoster = this.props.homeRoster;
         let awayRoster = this.props.awayRoster;
-        // console.log(awayRoster);
+        let homeBtnId = this.props.homeTeamId;
+        let awayBtnId = this.props.awayTeamId;
         return(
-            <div>
-                <div className={"drawer home " +(this.props.homeShow ? "out":"in")}>                   
-                    <span onClick={this.handleClose} className="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    <div className="select home-scorer">   
-                        <h3>Home Scorer</h3>
-                        <select value={this.state.iScorer} className="form-control" onChange={this.handleScorer}>
-                        {
-                            homeRoster.map((player) => {
-                                return(
-                                    <option value={'#' + player.squadNumber + ' ' + player.name}>#{player.squadNumber} {player.name}</option>                                 
-                                )
-                            })
-                        }               
-                        </select>
-                    </div>
-                    <div className="select away-assist">
-                        <h3>Home Assist</h3>
-                        <select value={this.state.iAssist} className="form-control" onChange={this.handleAssist}>
-                        {
-                            homeRoster.map((player) => {
-                                return(
-                                    <option value={'#' + player.squadNumber + ' ' + player.name}>#{player.squadNumber} {player.name}</option>                                 
-                                )
-                            })
-                        }
-                        </select>
-                    </div>
-                    <button onClick={this.submitHomeScore} className="btn submit-score btn-primary" type="submit">Submit</button>
-                </div>  
-                <div className={"drawer away " +(this.props.awayShow ? "awayout":"in")}>                   
-                    <span onClick={this.handleClose} className="glyphicon remove-away glyphicon-remove" aria-hidden="true"></span>          
-                    <div className="select away-scorer">
-                        <h3>Away Scorer</h3>
-                        <select value={this.state.iScorer} className="form-control" onChange={this.handleScorer}>
-                        {
-                            awayRoster.map((player) => {
-                                return(
-                                    <option value={'#' + player.squadNumber + ' ' + player.name}>#{player.squadNumber} {player.name}</option>                                 
-                                )
-                            })
-                        }
-                        </select>
-                    </div>
-                    <div className="select away-assist">
-                        <h3>Away Assist</h3>
-                        <select value={this.state.iAssist} className="form-control" onChange={this.handleAssist}>
-                            {
-                                awayRoster.map((player) => {
-                                    return(
-                                        <option value={'#' + player.squadNumber + ' ' + player.name}>#{player.squadNumber} {player.name}</option>                                 
-                                    )
-                            })
-                        }
-                        </select>
-                    </div>
-                    <button onClick={this.submitAwayScore} className="btn submit-score btn-primary" type="submit">Submit</button>
-                </div>
+            <div className="scoreBtn-container">
+                <button type="button" 
+                         onClick={this.openModal}
+                        value={homeBtnId}
+                        className="btn home-score-btn btn-default btn-lg">                                
+                    {this.props.homeTeam} Score!
+                </button>
+                <button type="button" 
+                        onClick={this.openModal}
+                        value={awayBtnId}
+                        className="btn away-score-btn btn-default btn-lg">                               
+                    {this.props.awayTeam} Score!
+                </button>
+                <Modal show={this.state.showModal} onHide={this.close}>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Enter the stats here</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <h4>Select the Scorer and Assist</h4>
+                                            <FormGroup controlId="formControlsSelect">
+                                                <ControlLabel>Select New Scorer</ControlLabel>
+                                                <FormControl value={this.state.player} componentClass="select" onChange={this.changeScorer} placeholder="select">
+                                                    <option>Pick Somebody...</option> 
+                                                    {
+                                                        this.state.roster.map((player) => {
+                                                            return(
+                                                                <option value={'#' + player.squadNumber + ' ' + player.name}>#{player.squadNumber} {player.name}</option>                                 
+                                                            )
+                                                        })
+                                                    }                                     
+                                                </FormControl>
+                                                <ControlLabel>Select New Assist</ControlLabel>
+                                                <FormControl value={this.state.player}  componentClass="select" onChange={this.changeAssist}placeholder="select">
+                                                    <option>Pick Somebody...</option> 
+                                                    {
+                                                        this.state.roster.map((player, i) => {
+                                                            return(
+                                                                <option value={i}>#{player.squadNumber} {player.name}</option>                                 
+                                                            )
+                                                        })
+                                                    }
+                                                </FormControl>
+                                            </FormGroup>                                           
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button onClick={this.submitScore} bsStyle="primary">Save changes</Button>
+                                            <Button onClick={this.close}>Close</Button>
+                                        </Modal.Footer>
+                            </Modal>
+                        
             </div>
         
         )

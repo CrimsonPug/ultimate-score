@@ -5,7 +5,6 @@
     background-position: center;
     background-repeat: no-repeat;
     position:relative;
-    
 }
 
 .half{
@@ -24,8 +23,6 @@
     position:relative;
     top:50%;
 }
-
-
 
 .col-centered{
     float: none;
@@ -86,32 +83,16 @@ h2{
     /*display:inline-block;*/
 }
 
-.team-title{
+.title-team{
     color:white;
 }
 
-.button-container{
-    position:relative;
-    /*bottom:137px;*/
-    bottom:140px;
-}
-.btn{
-    cursor: pointer;
+.Done{
+    text-align: center;
 }
 
-.home-btn{
-    float:left;
-    clear:right;
-    position:relative;
-    left:35%;
-}
-.away-btn{
-    float:right;
-    position:relative;
-    opacity:1.5; 
-    position:relative;
-    right:35%;
-    /*bottom:150px;*/
+.btn{
+    cursor: pointer;
 }
 
 .edit-btn{
@@ -148,9 +129,6 @@ h2{
 
     .edit-btn{
         top:50px;
-    }
-.button-container{
-        bottom:137px;
     }
 }
 
