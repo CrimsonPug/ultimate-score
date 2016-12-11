@@ -90,15 +90,11 @@ h2{
     color:white;
 }
 
-
-
 .button-container{
     position:relative;
     /*bottom:137px;*/
     bottom:140px;
-
 }
-
 .btn{
     cursor: pointer;
 }

@@ -57,6 +57,7 @@ body {
 .description{
   text-align: center;
   height: 180px;
+  margin-top:70px;
 }
 .description-wrapper{
   width:60%;
