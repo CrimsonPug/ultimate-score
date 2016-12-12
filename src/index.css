@@ -44,6 +44,9 @@ body {
   left:10%;
   z-index: 100;
 }
+ul{
+  padding-left:0px;
+}
 .title{
   color:white;
   font-size: 51px;
