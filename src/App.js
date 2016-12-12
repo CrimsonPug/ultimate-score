@@ -241,7 +241,7 @@ class Register extends Component {
 class Nav extends Component {
    render() {
         return (
-            <div className="nav">
+            <div className="nav-list">
               <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/login">Login</Link></li>
