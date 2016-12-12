@@ -58,7 +58,7 @@ class Home extends Component {
                         <p>Be involved in the game</p>
                     </div>
                     <div className="col-sm-6 col-lg-3">
-                        <Link to="/createPlayer">
+                        <Link to="/createPlayers">
                             <img className="icon" src={player} />
                         </Link>
                         <h2>Create Roster</h2>

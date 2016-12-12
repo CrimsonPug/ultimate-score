@@ -34,7 +34,13 @@ router.get('/allMatch',(req,res)=>{
     Match
 	.fetchAll()
 	.then(matches => {
-		res.json(matches.models.map(match => match.attributes))
+		let matchList = matches.models.map(match => match.attributes)
+        Team
+        .fetchAll()
+        .then(teams => {
+            let teamList = teams.models.map(team => team.attributes)
+            res.json({matchList:matchList,teamList:teamList})
+        })
 	})
 })
 //adding new match into the database

@@ -55,7 +55,8 @@ ul{
 .create-container{
   padding-right: 15px;
   padding-left: 15px;
-  padding-top: 30px
+  padding-top: 30px;
+  margin-bottom:50px;
 }
 .col-lg-4{
   text-align: center;
