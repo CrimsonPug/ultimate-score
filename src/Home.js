@@ -32,7 +32,7 @@ class Home extends Component {
                 <div className="description">
                     <div className="description-wrapper">
                         <h2>Making Game Statistic Easy</h2>
-                        <p>Score keeping shouldn’t be boring, it should be fun and easy. Ultimate Score is a fresh new way to keep track of the goal, scorer, and the assist at any particular point. It is initially tailored for ultimate frisbee but also suitable for any sport that use similar scoring points like soccer.</p>
+                        <p>Score keeping shouldn’t be boring, it should be fun and easy. Ultimate Score is a fresh new way to keep track of the goal, scorer, and the assist at any particular point. It is initially tailored for ultimate frisbee but also suitable for any sport that use similar scoring system like soccer.</p>
                     </div>
                 </div>
                 <div className="feature-container row">

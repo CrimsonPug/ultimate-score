@@ -129,7 +129,7 @@ class CreatePlayer extends Component{
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-lg-8 col-lg-offset-2 panel panel-danger slct">
+                        <div className="col-lg-6 panel panel-danger slct">
                             <div className="panel-body">
                                 <h2>Players Form</h2>
                             </div>
@@ -160,6 +160,27 @@ class CreatePlayer extends Component{
                                     </OverlayTrigger>
                                 </form>                               
                             </div>
+                        </div>
+                        <div className="col-lg-5 col-lg-offset-1 ">
+                            <h3>Your Players So Far</h3>
+                            <table className="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Squad Number</th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {this.state.addPlayer.map((player) =>{
+                                    return (
+                                        <tr>
+                                        <td>{player.name}</td>
+                                        <td>{player.squad_number}</td>                       
+                                    </tr>
+                                    )
+                                })}                                   
+                                </tbody>
+                            </table>
                         </div>
                     </div>   
                     <div className="row">
