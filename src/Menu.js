@@ -77,13 +77,13 @@ class Menu extends Component{
                          onClick={this.openModal}
                         value={homeBtnId}
                         className="btn home-score-btn btn-default btn-lg">                                
-                    {this.props.homeTeam} Score!
+                    Home Score!
                 </button>
                 <button type="button" 
                         onClick={this.openModal}
                         value={awayBtnId}
                         className="btn away-score-btn btn-default btn-lg">                               
-                    {this.props.awayTeam} Score!
+                    Away Score!
                 </button>
                 <Modal show={this.state.showModal} onHide={this.close}>
                                         <Modal.Header closeButton>
