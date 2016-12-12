@@ -4,6 +4,9 @@ import match from './../public/homeIcon/football-field.svg';
 import whistle from './../public/homeIcon/whistle.svg';
 import team from './../public/homeIcon/group.svg';
 import player from './../public/homeIcon/icon.svg';
+import linked from './../public/socialIcon/linked.svg';
+import twitter from './../public/socialIcon/twitter.svg';
+import gitHub from './../public/socialIcon/gitHub.svg';
 import './index.css';
 
 class Home extends Component {
