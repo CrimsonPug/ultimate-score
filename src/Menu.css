@@ -13,7 +13,7 @@
     left:10%;
 }
 @media (max-width: 576px) {
-  .description{
-    height:335px;
+  .scoreBtn-container{
+    bottom:116px;
   }
 }
