@@ -5,6 +5,7 @@ import './match.css';
 import {Score} from './Button';
 import {Menu} from './Menu';
 import {Stats} from './Stats';
+import {Footer} from './Footer';
 import axios from 'axios';
 
 class Match extends Component {
@@ -239,6 +240,7 @@ class Match extends Component {
                 <div className="well" style={wellStyles}>
                     <Button bsStyle="primary" onClick={this.gameOver} bsSize="large" block>Game Over!</Button>
                 </div>
+                <Footer />
             </div>
         )
     }

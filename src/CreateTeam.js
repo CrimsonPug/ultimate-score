@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Modal,Button} from 'react-bootstrap';
+import {Footer} from './Footer';
 import axios from 'axios';
 import './create.css';
 
@@ -126,6 +127,7 @@ class CreateTeam extends Component{
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

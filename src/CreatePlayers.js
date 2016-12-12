@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Modal,Button,Tooltip,OverlayTrigger} from 'react-bootstrap';
 import axios from 'axios';
 import {Link} from 'react-router';
+import {Footer} from './Footer';
 import './create.css';
 
 class CreatePlayer extends Component{
@@ -211,6 +212,7 @@ class CreatePlayer extends Component{
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

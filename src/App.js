@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import {MatchList} from './MatchList'
+import {Footer} from './Footer';
 import axios from 'axios';
 import './App.css';
 
@@ -170,6 +171,7 @@ class PrivatePage extends Component{
             </div>
           </div>
           <MatchList />
+          <Footer />
         </div>
       );
     }

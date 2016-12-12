@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Modal,Button,Tooltip,OverlayTrigger} from 'react-bootstrap';
+import {Footer} from './Footer';
 import {Link} from 'react-router';
 import './create.css';
 
@@ -159,6 +160,7 @@ class CreateMatch extends Component{
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }
