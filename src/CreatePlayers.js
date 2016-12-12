@@ -30,9 +30,8 @@ class CreatePlayer extends Component{
             })
         axios.post('/createTeam/addPlayer',this.state.addPlayer)
         .then((res)=>{
-            console.log(res.data)
+            location.href ="/private"
         })
-
     }
     close() {
         this.setState({ 
