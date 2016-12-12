@@ -31,8 +31,8 @@ class Home extends Component {
                 </div>
                 <div className="description">
                     <div className="description-wrapper">
-                        <h2>Making Game Statistic Easy</h2>
-                        <p>Score keeping shouldn’t be boring, it should be fun and easy. Ultimate Score is a fresh new way to keep track of the goal, scorer, and the assist at any particular point. It is initially tailored for ultimate frisbee but also suitable for any sport that use similar scoring system like soccer.</p>
+                        <h2>Making Game Statistics Easy</h2>
+                        <p>Score keeping shouldn’t be boring, it should be fun and easy. Ultimate Score is a fresh new way to keep track of the goal, scorer, and the assist at any particular point. It is initially tailored for ultimate frisbee but is also suitable for any sport that use similar scoring system like soccer.</p>
                     </div>
                 </div>
                 <div className="feature-container row">
@@ -48,7 +48,7 @@ class Home extends Component {
                             <img onClick={this.matchExample} className="icon" src={whistle} />
                         </Link>
                         <h2>Score Keeper</h2>
-                        <p>Find out how simple it is to record statistic</p>
+                        <p>Find out how simple it is to record statistics</p>
                     </div>
                     <div className="col-sm-6 col-lg-3">
                         <Link to="/createTeam">
