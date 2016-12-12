@@ -29,6 +29,7 @@ body {
   background-image: url('https://d36m266ykvepgv.cloudfront.net/uploads/media/CyAV9Ho6CT/s-1600-1068/the-pull-deepthi-indukuri-7424.jpg');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   position: relative;
   }
 .hero-filter{

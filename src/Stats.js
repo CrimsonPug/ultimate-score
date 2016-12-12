@@ -198,6 +198,7 @@ class Stats extends Component{
                                             <FormGroup controlId="formControlsSelect">
                                                 <ControlLabel>Select New Scorer</ControlLabel>
                                                 <FormControl value={this.state.player} componentClass="select" onChange={this.changeScorer} placeholder="select">
+                                                    <option>New Scorer...</option>
                                                     {
                                                         this.state.roster.map((player) => {
                                                             return(
@@ -208,6 +209,7 @@ class Stats extends Component{
                                                 </FormControl>
                                                 <ControlLabel>Select New Assist</ControlLabel>
                                                 <FormControl value={this.state.player}  componentClass="select" onChange={this.changeAssist}placeholder="select">
+                                                    <option>New Assist...</option>
                                                     {
                                                         this.state.roster.map((player, i) => {
                                                             return(
