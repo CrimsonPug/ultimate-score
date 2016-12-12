@@ -117,7 +117,7 @@ class PrivatePage extends Component{
     }
     else{
         console.log('accest denied');
-        location.href = '/';
+        location.href = '/register';
     }
   
      /* TASK 7: The response should include the username, display "Hello, [USERNAME]" on this page.
@@ -211,6 +211,7 @@ class Register extends Component {
   render() {
     return (
       <div id="auth">
+        <h2>Looks like you're not part of the system yet, sign up here!</h2>
         <h3>Registration Form</h3>
         <form onSubmit={this.formSubmit}>
           <div className="form-group">

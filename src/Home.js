@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Jumbotron} from 'react-bootstrap';
+import {Link} from 'react-router';
 import match from './../public/homeIcon/football-field.svg';
 import whistle from './../public/homeIcon/whistle.svg';
 import team from './../public/homeIcon/group.svg';
@@ -10,6 +11,13 @@ import gitHub from './../public/socialIcon/gitHub.svg';
 import './index.css';
 
 class Home extends Component {
+    constructor(){
+        super();
+            this.matchExample = this.matchExample.bind(this)
+    }
+    matchExample(){
+        localStorage.matchId = 1;
+    }
     render(){
         return(
             <div>
@@ -29,22 +37,30 @@ class Home extends Component {
                 </div>
                 <div className="feature-container row">
                     <div className="col-sm-6 col-lg-3">
-                        <img className="icon" src={match} />
+                        <Link to="/createMatch">
+                            <img className="icon" src={match} />
+                        </Link>
                         <h2>Create Match</h2>
                         <p>Get started by creating your own match</p>
                     </div>
                     <div className="col-sm-6 col-lg-3">
-                        <img className="icon" src={whistle} />
+                        <Link to="/match">
+                            <img onClick={this.matchExample} className="icon" src={whistle} />
+                        </Link>
                         <h2>Score Keeper</h2>
                         <p>Find out how simple it is to record statistic</p>
                     </div>
                     <div className="col-sm-6 col-lg-3">
-                        <img className="icon" src={team} />
+                        <Link to="/createTeam">
+                            <img className="icon" src={team} />
+                        </Link>
                         <h2>Create Team</h2>
                         <p>Be involved in the game</p>
                     </div>
                     <div className="col-sm-6 col-lg-3">
-                        <img className="icon" src={player} />
+                        <Link to="/createPlayer">
+                            <img className="icon" src={player} />
+                        </Link>
                         <h2>Create Roster</h2>
                         <p>Add your friends into the team!</p>
                     </div>
