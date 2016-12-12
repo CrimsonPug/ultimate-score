@@ -35,14 +35,15 @@ class MatchList extends Component{
     render(){
         return(
             <div className="row">
-                <div className="col-lg-6 col-lg-offset-3">
+                <div className="col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2">
                     <h3>Available Matches</h3>
                     {
                         this.state.match.map((match)=>{
                             return(
                                 <Link to="/match">
-                                    <div className="well" onClick={()=>this.saveMatch(match)} value={match.matchID}>{match.matchDescription}</div>
-                                </Link>
+                                        <div className="well " onClick={()=>this.saveMatch(match)} value={match.matchID}>
+                                            <h4>{match.matchDescription}</h4>
+                                        </div>                                </Link>
                             )
                         })
                     }
