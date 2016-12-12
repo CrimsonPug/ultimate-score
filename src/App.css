@@ -30,7 +30,7 @@
 ul{
   height: 30px;
 }
-li{
+.nav-list li{
   display:inline-block;
   padding-left:20px;
   padding-top:10px;
