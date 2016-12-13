@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTableIfNotExists('open-matches', function (table) {
         table.increments('id').primary(); // adds incrementing int for id
@@ -11,8 +10,8 @@ exports.up = function(knex, Promise) {
         table.string('home_team').notNullable();
         table.string('away_team').notNullable();
         table.string('final_score');
-        table.string('home_stats');
-        table.string('away_stats');
+        table.text('home_stats');
+        table.text('away_stats');
         table.integer('user_id')
     })
 };
