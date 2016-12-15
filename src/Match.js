@@ -134,9 +134,9 @@ class Match extends Component {
                     deleteScore : homeDelete,
                     match : this.state.match
                 } 
-                console.log(saveData)
+                // console.log('deleting',saveData)
                 axios
-                    .put('/deleteHomeStats',saveData)
+                    .put('/openPlayers/deleteHomeStats',saveData)
                     .then((res) => {
                         // console.log(res.data)
                         this.setState({
