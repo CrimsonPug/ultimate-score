@@ -240,7 +240,7 @@ router.put('/deleteStats',(req,res)=>{
 })
 //delete home team stats 
 router.put('/deleteHomeStats',(req,res)=>{  
-        console.log(req.body)
+        console.log('deleting home')
         Match
             .where({id:req.body.match})
             .fetch()
