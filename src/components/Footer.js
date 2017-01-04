@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import linked from './../public/socialIcon/linked.svg';
-import twitter from './../public/socialIcon/twitter.svg';
-import gitHub from './../public/socialIcon/gitHub.svg';
-import './index.css';
+import linked from './../../public/socialIcon/linked.svg';
+import twitter from './../../public/socialIcon/twitter.svg';
+import gitHub from './../../public/socialIcon/gitHub.svg';
+import './../index.css';
 
 class Footer extends Component {
     render(){
