@@ -1,0 +1,19 @@
+.scoreBtn-container{
+    width:100%;
+    text-align: center;
+    position:relative;
+    bottom:180px;
+}
+.home-score-btn{
+    position:relative;
+    right:10%;
+}
+.away-score-btn{
+    position:relative;
+    left:10%;
+}
+@media (max-width: 576px) {
+  .scoreBtn-container{
+    bottom:116px;
+  }
+}
