@@ -4,7 +4,7 @@ import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Nav,Register,Login,PrivatePage} from './components/App';
 import {Home} from './components/Home';
 import {Match} from './components/game/Match';
-import {CreateMatch} from './components/create/createMatch';
+import {CreateMatch} from './components/create/CreateMatch';
 import {CreateTeam} from './components/create/CreateTeam';
 import {CreatePlayer} from './components/create/CreatePlayers';
 import './index.css';
