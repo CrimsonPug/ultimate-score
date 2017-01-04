@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-import {Nav,Register,Login,PrivatePage} from './App';
-import {Home} from './Home';
-import {Match} from './Match';
-import {CreateMatch} from './CreateMatch';
-import {CreateTeam} from './CreateTeam';
-import {CreatePlayer} from './CreatePlayers';
+import {Nav,Register,Login,PrivatePage} from './components/App';
+import {Home} from './components/Home';
+import {Match} from './components/game/Match';
+import {CreateMatch} from './components/create/createMatch';
+import {CreateTeam} from './components/create/CreateTeam';
+import {CreatePlayer} from './components/create/CreatePlayers';
 import './index.css';
 
 
